@@ -1,17 +1,34 @@
 package com.veechie.mikiebrenbren.funfacts;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
-public class FunFactsActivity extends ActionBarActivity {
+public class FunFactsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun_facts);
+
+        //declare our view variables and assign them the views from the layout files
+        final TextView factLabel = (TextView) findViewById(R.id.factTextView);
+        Button showFactButton = (Button) findViewById(R.id.showFactButton); //alt + enter
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //The button was clikced, so updated the fact label with a new fact
+                String fact = "Ostriches can run faster than horses";
+                factLabel.setText(fact);
+            }
+        };
+        showFactButton.setOnClickListener(listener);
     }
 
 
